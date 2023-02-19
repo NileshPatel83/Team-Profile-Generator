@@ -1,0 +1,187 @@
+:root{
+    --background-color: rgb(224, 225, 221);
+    --header-background-color: rgb(14, 26, 41);
+    --card-background-color: rgb(120, 139, 168);
+    --lable-manager-color: rgb(32, 51, 86);
+    --lable-engineers-color: rgb(70, 121, 155);
+    --image-background-color: rgb(22, 55, 136);
+    --manager-card-background-color: rgb(166, 218, 220);
+    --font-color-white: white;
+    --font-color-black: black;
+    --left-indent: 15rem;
+    --card-width: 12rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+body{
+    background-color: var(--background-color);
+    line-height: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--font-color-white);
+}
+
+header{
+    line-height: 5rem;
+    text-align: center;
+    background-color: var(--header-background-color);
+}
+
+footer{
+    display: block;
+    line-height: 2rem;
+    text-align: center;
+    background-color: var(--header-background-color);
+}
+
+footer div{
+    font-size: 1.25rem;
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+img{
+    width: 36px;
+    height: 36px;
+    border-radius: 0.25rem;
+    background-color: var(--image-background-color);
+}
+
+.photo{
+    width: 128px;
+    height: 128px;
+    background-color: var(--card-background-color);
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    min-width: var(--card-width);
+}
+
+.left{
+    flex: 0 0 var(--left-indent);
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.right{
+    flex: 1;
+    margin: 0 1rem 0 1rem;
+}
+
+.engineers, .interns{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: var(--card-width); 
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background-color);
+    border-radius: 0.5rem;
+    width: 15rem;
+    margin: 0 1rem 0 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--font-color-black);
+}
+
+.engineer, .intern{
+    margin-bottom: 1rem;
+}
+
+.manager, .manager .photo{
+    background-color: var(--manager-card-background-color);
+}
+
+.card-heading{
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.employee-name{
+    margin: 1rem 0;
+}
+
+.card-heading h2{
+    font-size: 1.25rem;
+}
+
+.card-heading p{
+    margin: 1rem 0 0 0;
+    text-align: left;
+}
+
+.label{
+    line-height: 2rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.label-manager{
+    background-color: var(--lable-manager-color);
+}
+
+.label-engineers{
+    background-color: var(--lable-engineers-color);
+}
+
+.label-interns{
+    background-color: var(--lable-engineers-color);
+}
+
+a{
+    text-decoration: none;
+    color: var(--font-color-black)
+}
+
+.card-body{
+    display: block;
+}
+
+.card-body div{
+    margin: 0.5rem 0;
+    line-height: 2rem;
+}
+
+.card-body img{
+    float: left;
+}
+
+.linked-in{
+    margin-bottom: 0.5rem;
+}
+
+.github{
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 768px){
+    .content{
+        width: fit-content;
+        margin-right: 1rem;
+        display: block;
+    }
+
+    .right{
+        margin-right: 0;
+    }
+
+    .card{
+        display: block;
+        margin: 1rem auto;
+    }
+}
