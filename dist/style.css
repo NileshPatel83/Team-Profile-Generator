@@ -1,11 +1,13 @@
 :root{
     --background-color: rgb(224, 225, 221);
     --header-background-color: rgb(14, 26, 41);
-    --card-background-color: rgb(120, 139, 168);
     --lable-manager-color: rgb(32, 51, 86);
     --lable-engineers-color: rgb(70, 121, 155);
+    --lable-interns-color: rgb(67, 201, 226);
     --image-background-color: rgb(22, 55, 136);
-    --manager-card-background-color: rgb(166, 218, 220);
+    --manager-card-background-color: rgb(120, 139, 168);
+    --engineer-card-background-color: rgb(5, 147, 197);
+    --intern-card-background-color: rgb(142, 223, 238);
     --font-color-white: white;
     --font-color-black: black;
     --left-indent: 15rem;
@@ -88,7 +90,6 @@ img{
 .card{
     display: flex;
     flex-direction: column;
-    background-color: var(--card-background-color);
     border-radius: 0.5rem;
     width: 15rem;
     margin: 0 1rem 0 1rem;
@@ -103,6 +104,14 @@ img{
 
 .manager, .manager .photo{
     background-color: var(--manager-card-background-color);
+}
+
+.engineers .card{
+    background-color: var(--engineer-card-background-color);
+}
+
+.interns .card, .interns .photo{
+    background-color: var(--intern-card-background-color);
 }
 
 .card-heading{
@@ -140,7 +149,7 @@ img{
 }
 
 .label-interns{
-    background-color: var(--lable-engineers-color);
+    background-color: var(--lable-interns-color);
 }
 
 a{
