@@ -17,7 +17,7 @@ describe("Employee", () => {
             expect(employee instanceof Employee).toEqual(true);
           });
 
-        //Tests value of property called 'name' when a new instance of Employee class is crated using constructor.
+        //Tests value of property called 'name' when a new instance of Employee class is created using constructor.
         it("should set a 'name' property", () => {
 
             const employee = new Employee(name, id, email);
