@@ -26,4 +26,14 @@ describe("Manager", () => {
             expect(manager.officeNumber).toEqual(officeNumber);
         });
     });
+
+     //Tests getRole method of a new instance of Manager class.
+     describe("getRole", () => {
+        it("should return the role of the manager", () => {
+
+            const manager = new Manager(name, id, email, officeNumber);
+
+            expect(manager.getRole()).toEqual('Manager');
+        });
+    });
 });
