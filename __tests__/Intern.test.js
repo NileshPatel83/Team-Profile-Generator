@@ -55,5 +55,14 @@ describe("Intern", () => {
             expect(intern.getLinkedIn()).toEqual(linkedIn);
         });
     });
-        
+    
+     //Tests getRole method of a new instance of Intern class.
+     describe("getRole", () => {
+        it("should return the role of the intern", () => {
+
+            const intern = new Intern(name, id, email, school, linkedIn);
+
+            expect(intern.getRole()).toEqual('Intern');
+        });
+    });
 });
