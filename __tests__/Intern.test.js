@@ -45,4 +45,15 @@ describe("Intern", () => {
             expect(intern.getSchool()).toEqual(school);
         });
     });
+
+    //Tests getLinkedIn method of a new instance of Intern class.
+    describe("getLinkedIn", () => {
+        it("should return LinkedIn profile URL of the intern", () => {
+
+            const intern = new Intern(name, id, email, school, linkedIn);
+
+            expect(intern.getLinkedIn()).toEqual(linkedIn);
+        });
+    });
+        
 });
