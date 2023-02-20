@@ -78,4 +78,48 @@ describe("HTMLTemplate", () => {
             expect(htmlTemplate.getEngineers()).toEqual(engineers);
         });
     });
+
+     //Tests getCurrentEngineerContent method of a new instance of HTMLTemplate class.
+     describe("getCurrentEngineerContent", () => {
+        it("should return content for current enginner for html content to generate html file", () => {
+
+            const engineerContent = '';
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getCurrentEngineerContent(null)).toEqual(engineerContent);
+        });
+    });
+
+    //Tests getInternsContent method of a new instance of HTMLTemplate class.
+    describe("getInternsContent", () => {
+        it("should return content for all interns for html content to generate html file", () => {
+
+            const internsContent = '';
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getInternsContent()).toEqual(internsContent);
+        });
+    });
+
+    //Tests getInterns method of a new instance of HTMLTemplate class.
+    describe("getInterns", () => {
+        it("should return all interns from employee data", () => {
+
+            const interns = null;
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getInterns()).toEqual(interns);
+        });
+    });
+
+     //Tests getCurrentInternContent method of a new instance of HTMLTemplate class.
+     describe("getCurrentInternContent", () => {
+        it("should return content for current intern for html content to generate html file", () => {
+
+            const internContent = '';
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getCurrentInternContent(null)).toEqual(internContent);
+        });
+    });
 });
