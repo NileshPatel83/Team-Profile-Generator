@@ -1,16 +1,43 @@
 const Employee = require('../lib/Employee.js');
 
 describe("Employee", () => {
+
+    //Initialization tests.
     describe("Initialization", () => {
-        it("should return a object containing 'name', 'id' and 'email' properties", () => {
-            const name = 'Nilesh';
-            const id = '001';
-            const email = 'nilesh@email.com';
+
+        const name = 'Nilesh Patel';
+        const id = '001';
+        const email = 'nilesh@email.com';
+
+        //Tests whether a new instance of Employee object is created or not.
+        it("should return a new 'Employee' object", () => {
+
+            const employee = new Employee();
+
+            expect(employee instanceof Employee).toEqual(true);
+          });
+
+        //Tests value of property called 'name' when a new instance of Employee class is crated using constructor.
+        it("should set a 'name' property", () => {
 
             const employee = new Employee(name, id, email);
 
             expect(employee.name).toEqual(name);
+        });
+
+        //Tests value of property called 'id' when a new instance of Employee class is crated using constructor.
+        it("should set a 'id' property", () => {
+
+            const employee = new Employee(name, id, email);
+
             expect(employee.id).toEqual(id);
+        });
+
+        //Tests value of property called 'email' when a new instance of Employee class is crated using constructor.
+        it("should set a 'email' property", () => {
+
+            const employee = new Employee(name, id, email);
+
             expect(employee.email).toEqual(email);
         });
     });
