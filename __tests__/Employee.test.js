@@ -42,12 +42,23 @@ describe("Employee", () => {
         });
     });
 
+    //Tests getName method of a new instance of Employee class.
     describe("getName", () => {
         it("should return the name of the employee", () => {
 
             const employee = new Employee(name, id, email);
 
             expect(employee.getName()).toEqual(name);
+        });
+    });
+
+    //Tests getId method of a new instance of Employee class.
+    describe("getId", () => {
+        it("should return the id of the employee", () => {
+
+            const employee = new Employee(name, id, email);
+
+            expect(employee.getId()).toEqual(id);
         });
     });
 });
