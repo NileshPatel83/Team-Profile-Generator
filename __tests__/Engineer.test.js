@@ -55,4 +55,14 @@ describe("Engineer", () => {
             expect(engineer.getLinkedIn()).toEqual(linkedIn);
         });
     });
+    
+     //Tests getRole method of a new instance of Engineer class.
+     describe("getRole", () => {
+        it("should return the role of the engineer", () => {
+
+            const engineer = new Engineer(name, id, email, github, linkedIn);
+
+            expect(engineer.getRole()).toEqual('Engineer');
+        });
+    });
 });
