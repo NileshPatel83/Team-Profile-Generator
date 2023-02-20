@@ -4,6 +4,7 @@ describe("HTMLTemplate", () => {
 
     const employeeData = null;
     const htmlContent = '';
+    const managerContent = '';
 
     //Initialization tests.
     describe("Initialization", () => {  
@@ -32,6 +33,16 @@ describe("HTMLTemplate", () => {
             const htmlTemplate = new HTMLTemplate(employeeData);
 
             expect(htmlTemplate.generateHTMLContent()).toEqual(htmlContent);
+        });
+    });
+
+    //Tests getManagerContent method of a new instance of HTMLTemplate class.
+    describe("getManagerContent", () => {
+        it("should return manager content for html content to generate html file", () => {
+
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getManagerContent()).toEqual(managerContent);
         });
     });
 });
