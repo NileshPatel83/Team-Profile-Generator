@@ -71,4 +71,14 @@ describe("Employee", () => {
             expect(employee.getEmail()).toEqual(email);
         });
     });
+
+    //Tests getRole method of a new instance of Employee class.
+    describe("getRole", () => {
+        it("should return the role of the employee", () => {
+
+            const employee = new Employee(name, id, email);
+
+            expect(employee.getRole()).toEqual('Employee');
+        });
+    });
 });
