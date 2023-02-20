@@ -3,8 +3,6 @@ const HTMLTemplate = require('../lib/HTMLTemplate');
 describe("HTMLTemplate", () => {
 
     const employeeData = null;
-    const htmlContent = '';
-    const managerContent = '';
 
     //Initialization tests.
     describe("Initialization", () => {  
@@ -30,6 +28,7 @@ describe("HTMLTemplate", () => {
     describe("generateHTMLContent", () => {
         it("should return html content to generate html file", () => {
 
+            const htmlContent = '';
             const htmlTemplate = new HTMLTemplate(employeeData);
 
             expect(htmlTemplate.generateHTMLContent()).toEqual(htmlContent);
@@ -40,9 +39,21 @@ describe("HTMLTemplate", () => {
     describe("getManagerContent", () => {
         it("should return manager content for html content to generate html file", () => {
 
+            const managerContent = '';
             const htmlTemplate = new HTMLTemplate(employeeData);
 
             expect(htmlTemplate.getManagerContent()).toEqual(managerContent);
+        });
+    });
+
+    //Tests getManager method of a new instance of HTMLTemplate class.
+    describe("getManager", () => {
+        it("should return an instance of manager class", () => {
+
+            const manager = null;
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getManager()).toEqual(manager);
         });
     });
 });
