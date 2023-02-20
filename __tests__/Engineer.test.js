@@ -35,4 +35,14 @@ describe("Engineer", () => {
             expect(engineer.linkedIn).toEqual(linkedIn);
         });
     });
+
+     //Tests getGithub method of a new instance of Engineer class.
+     describe("getGithub", () => {
+        it("should return GitHub profile URL of the engineer", () => {
+
+            const engineer = new Engineer(name, id, email, github, linkedIn);
+
+            expect(engineer.getGithub()).toEqual(`https://github.com/${github}`);
+        });
+    });
 });
