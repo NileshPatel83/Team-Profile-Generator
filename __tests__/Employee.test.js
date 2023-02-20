@@ -2,12 +2,12 @@ const Employee = require('../lib/Employee.js');
 
 describe("Employee", () => {
 
-    //Initialization tests.
-    describe("Initialization", () => {
+    const name = 'Nilesh Patel';
+    const id = '001';
+    const email = 'nilesh@email.com';
 
-        const name = 'Nilesh Patel';
-        const id = '001';
-        const email = 'nilesh@email.com';
+    //Initialization tests.
+    describe("Initialization", () => {  
 
         //Tests whether a new instance of Employee object is created or not.
         it("should return a new 'Employee' object", () => {
@@ -39,6 +39,15 @@ describe("Employee", () => {
             const employee = new Employee(name, id, email);
 
             expect(employee.email).toEqual(email);
+        });
+    });
+
+    describe("getName", () => {
+        it("should return the name of the employee", () => {
+
+            const employee = new Employee(name, id, email);
+
+            expect(employee.getName()).toEqual(name);
         });
     });
 });
