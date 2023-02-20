@@ -19,12 +19,20 @@ describe("Engineer", () => {
             expect(engineer instanceof Engineer).toEqual(true);
         });
 
-        //Tests value of property called 'github' when a new instance of Manager class is created using constructor.
+        //Tests value of property called 'github' when a new instance of Engineer class is created using constructor.
         it("should set a 'github' property", () => {
 
-            const engineer = new Engineer(name, id, email, github);
+            const engineer = new Engineer(name, id, email, github, linkedIn);
 
             expect(engineer.github).toEqual(github);
+        });
+
+         //Tests value of property called 'linkedIn' when a new instance of Engineer class is created using constructor.
+         it("should set a 'linkedIn' property", () => {
+
+            const engineer = new Engineer(name, id, email, github, linkedIn);
+
+            expect(engineer.linkedIn).toEqual(linkedIn);
         });
     });
 });
