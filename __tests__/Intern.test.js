@@ -18,6 +18,14 @@ describe("Intern", () => {
 
             expect(intern instanceof Intern).toEqual(true);
         });
+
+         //Tests value of property called 'school' when a new instance of Intern class is created using constructor.
+         it("should set a 'school' property", () => {
+
+            const intern = new Intern(name, id, email, school, linkedIn);
+
+            expect(intern.school).toEqual(school);
+        });
     });
 
 });
