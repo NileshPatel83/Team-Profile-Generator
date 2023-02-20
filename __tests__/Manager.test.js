@@ -18,7 +18,7 @@ describe("Manager", () => {
             expect(manager instanceof Manager).toEqual(true);
           });
 
-         //Tests value of property called 'officeNumber' when a new instance of Manager class is crated using constructor.
+         //Tests value of property called 'officeNumber' when a new instance of Manager class is created using constructor.
          it("should set a 'officeNumber' property", () => {
 
             const manager = new Manager(name, id, email, officeNumber);
