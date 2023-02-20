@@ -5,6 +5,7 @@ describe("Engineer", () => {
     const name = 'Nilesh Patel';
     const id = '001';
     const email = 'nilesh@email.com';
+    const description = 'This is a short description about the engineer.';
     const github = 'NileshPatel83';
     const linkedIn = 'www.linkedin.com';
 
@@ -22,7 +23,7 @@ describe("Engineer", () => {
         //Tests value of property called 'github' when a new instance of Engineer class is created using constructor.
         it("should set a 'github' property", () => {
 
-            const engineer = new Engineer(name, id, email, github, linkedIn);
+            const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
             expect(engineer.github).toEqual(github);
         });
@@ -30,7 +31,7 @@ describe("Engineer", () => {
          //Tests value of property called 'linkedIn' when a new instance of Engineer class is created using constructor.
          it("should set a 'linkedIn' property", () => {
 
-            const engineer = new Engineer(name, id, email, github, linkedIn);
+            const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
             expect(engineer.linkedIn).toEqual(linkedIn);
         });
@@ -40,7 +41,7 @@ describe("Engineer", () => {
      describe("getGithub", () => {
         it("should return GitHub profile URL of the engineer", () => {
 
-            const engineer = new Engineer(name, id, email, github, linkedIn);
+            const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
             expect(engineer.getGithub()).toEqual(`https://github.com/${github}`);
         });
@@ -50,7 +51,7 @@ describe("Engineer", () => {
      describe("getLinkedIn", () => {
         it("should return LinkedIn profile URL of the engineer", () => {
 
-            const engineer = new Engineer(name, id, email, github, linkedIn);
+            const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
             expect(engineer.getLinkedIn()).toEqual(linkedIn);
         });
@@ -60,7 +61,7 @@ describe("Engineer", () => {
      describe("getRole", () => {
         it("should return the role of the engineer", () => {
 
-            const engineer = new Engineer(name, id, email, github, linkedIn);
+            const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
             expect(engineer.getRole()).toEqual('Engineer');
         });

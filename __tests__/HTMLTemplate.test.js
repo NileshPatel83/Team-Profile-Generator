@@ -56,4 +56,26 @@ describe("HTMLTemplate", () => {
             expect(htmlTemplate.getManager()).toEqual(manager);
         });
     });
+
+    //Tests getEngieersContent method of a new instance of HTMLTemplate class.
+    describe("getEngieersContent", () => {
+        it("should return content for all engineers for html content to generate html file", () => {
+
+            const engineersContent = '';
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getEngieersContent()).toEqual(engineersContent);
+        });
+    });
+
+    //Tests getEngineers method of a new instance of HTMLTemplate class.
+    describe("getEngineers", () => {
+        it("should return all engineers from employee data", () => {
+
+            const engineers = null;
+            const htmlTemplate = new HTMLTemplate(employeeData);
+
+            expect(htmlTemplate.getEngineers()).toEqual(engineers);
+        });
+    });
 });

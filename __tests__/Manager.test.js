@@ -5,6 +5,7 @@ describe("Manager", () => {
     const name = 'Nilesh Patel';
     const id = '001';
     const email = 'nilesh@email.com';
+    const description = 'This is a short description about the manager.';
     const officeNumber = '08 8000 0000';
 
     //Initialization tests.
@@ -21,7 +22,7 @@ describe("Manager", () => {
          //Tests value of property called 'officeNumber' when a new instance of Manager class is created using constructor.
          it("should set a 'officeNumber' property", () => {
 
-            const manager = new Manager(name, id, email, officeNumber);
+            const manager = new Manager(name, id, email, description, officeNumber);
 
             expect(manager.officeNumber).toEqual(officeNumber);
         });
@@ -31,7 +32,7 @@ describe("Manager", () => {
      describe("getRole", () => {
         it("should return the role of the manager", () => {
 
-            const manager = new Manager(name, id, email, officeNumber);
+            const manager = new Manager(name, id, email, description, officeNumber);
 
             expect(manager.getRole()).toEqual('Manager');
         });
