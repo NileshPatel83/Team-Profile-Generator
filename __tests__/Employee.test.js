@@ -5,6 +5,7 @@ describe("Employee", () => {
     const name = 'Nilesh Patel';
     const id = '001';
     const email = 'nilesh@email.com';
+    const description = 'This is a description for employee.';
 
     //Initialization tests.
     describe("Initialization", () => {  
@@ -17,10 +18,10 @@ describe("Employee", () => {
             expect(employee instanceof Employee).toEqual(true);
           });
 
-        //Tests value of property called 'name' when a new instance of Employee class is crated using constructor.
+        //Tests value of property called 'name' when a new instance of Employee class is created using constructor.
         it("should set a 'name' property", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.name).toEqual(name);
         });
@@ -28,7 +29,7 @@ describe("Employee", () => {
         //Tests value of property called 'id' when a new instance of Employee class is crated using constructor.
         it("should set a 'id' property", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.id).toEqual(id);
         });
@@ -36,9 +37,17 @@ describe("Employee", () => {
         //Tests value of property called 'email' when a new instance of Employee class is crated using constructor.
         it("should set a 'email' property", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.email).toEqual(email);
+        });
+
+         //Tests value of property called 'description' when a new instance of Employee class is crated using constructor.
+         it("should set a 'description' property", () => {
+
+            const employee = new Employee(name, id, email, description);
+
+            expect(employee.description).toEqual(description);
         });
     });
 
@@ -46,7 +55,7 @@ describe("Employee", () => {
     describe("getName", () => {
         it("should return the name of the employee", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.getName()).toEqual(name);
         });
@@ -56,7 +65,7 @@ describe("Employee", () => {
     describe("getId", () => {
         it("should return the id of the employee", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.getId()).toEqual(id);
         });
@@ -66,9 +75,19 @@ describe("Employee", () => {
     describe("getEmail", () => {
         it("should return the email of the employee", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.getEmail()).toEqual(email);
+        });
+    });
+
+    //Tests getDescription method of a new instance of Employee class.
+    describe("getDescription", () => {
+        it("should return short description about the employee", () => {
+
+            const employee = new Employee(name, id, email, description);
+
+            expect(employee.getDescription()).toEqual(description);
         });
     });
 
@@ -76,7 +95,7 @@ describe("Employee", () => {
     describe("getRole", () => {
         it("should return the role of the employee", () => {
 
-            const employee = new Employee(name, id, email);
+            const employee = new Employee(name, id, email, description);
 
             expect(employee.getRole()).toEqual('Employee');
         });

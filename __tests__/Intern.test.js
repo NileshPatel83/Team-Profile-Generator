@@ -5,6 +5,7 @@ describe("Intern", () => {
     const name = 'Nilesh Patel';
     const id = '001';
     const email = 'nilesh@email.com';
+    const description = 'This is a short description about the intern.';
     const school = 'University of Adelaide';
     const linkedIn = 'www.linkedin.com';
 
@@ -22,7 +23,7 @@ describe("Intern", () => {
          //Tests value of property called 'school' when a new instance of Intern class is created using constructor.
          it("should set a 'school' property", () => {
 
-            const intern = new Intern(name, id, email, school, linkedIn);
+            const intern = new Intern(name, id, email, description, school, linkedIn);
 
             expect(intern.school).toEqual(school);
         });
@@ -30,7 +31,7 @@ describe("Intern", () => {
            //Tests value of property called 'linkedIn' when a new instance of Intern class is created using constructor.
            it("should set a 'linkedIn' property", () => {
 
-            const intern = new Intern(name, id, email, school, linkedIn);
+            const intern = new Intern(name, id, email, description, school, linkedIn);
 
             expect(intern.linkedIn).toEqual(linkedIn);
         });
@@ -40,7 +41,7 @@ describe("Intern", () => {
     describe("getSchool", () => {
         it("should return school name of the intern", () => {
 
-            const intern = new Intern(name, id, email, school, linkedIn);
+            const intern = new Intern(name, id, email, description, school, linkedIn);
 
             expect(intern.getSchool()).toEqual(school);
         });
@@ -50,7 +51,7 @@ describe("Intern", () => {
     describe("getLinkedIn", () => {
         it("should return LinkedIn profile URL of the intern", () => {
 
-            const intern = new Intern(name, id, email, school, linkedIn);
+            const intern = new Intern(name, id, email, description, school, linkedIn);
 
             expect(intern.getLinkedIn()).toEqual(linkedIn);
         });
@@ -60,7 +61,7 @@ describe("Intern", () => {
      describe("getRole", () => {
         it("should return the role of the intern", () => {
 
-            const intern = new Intern(name, id, email, school, linkedIn);
+            const intern = new Intern(name, id, email, description, school, linkedIn);
 
             expect(intern.getRole()).toEqual('Intern');
         });
