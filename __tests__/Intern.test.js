@@ -36,4 +36,13 @@ describe("Intern", () => {
         });
     });
 
+    //Tests getSchool method of a new instance of Intern class.
+    describe("getSchool", () => {
+        it("should return school name of the intern", () => {
+
+            const intern = new Intern(name, id, email, school, linkedIn);
+
+            expect(intern.getSchool()).toEqual(school);
+        });
+    });
 });
