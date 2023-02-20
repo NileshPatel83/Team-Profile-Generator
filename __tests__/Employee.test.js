@@ -61,4 +61,14 @@ describe("Employee", () => {
             expect(employee.getId()).toEqual(id);
         });
     });
+
+    //Tests getEmail method of a new instance of Employee class.
+    describe("getEmail", () => {
+        it("should return the email of the employee", () => {
+
+            const employee = new Employee(name, id, email);
+
+            expect(employee.getEmail()).toEqual(email);
+        });
+    });
 });
