@@ -81,6 +81,16 @@ describe("Employee", () => {
         });
     });
 
+    //Tests getDescription method of a new instance of Employee class.
+    describe("getDescription", () => {
+        it("should return short description about the employee", () => {
+
+            const employee = new Employee(name, id, email, description);
+
+            expect(employee.getDescription()).toEqual(description);
+        });
+    });
+
     //Tests getRole method of a new instance of Employee class.
     describe("getRole", () => {
         it("should return the role of the employee", () => {
