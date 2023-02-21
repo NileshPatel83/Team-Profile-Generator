@@ -13,125 +13,25 @@ const Intern = require('./lib/Intern.js');
 //Variable to access HTMLTemplate class.
 const HTMLTemplate = require('./lib/HTMLTemplate.js');
 
+//Variable to access constants in Constants class.
+const Constants = require('./lib/Constants.js');
+const constants = new Constants();
+
 //Variable to access inquirer module methods.
 const inquirer = require('inquirer');
 
 //Variable to access file system module methods.
 const fs = require('fs');
 
-const options = ['Engineer', 'Intern', 'I don\'t want to add any more team members.'];
-
+//Employee array that will be used to generate HTML content.
 let employees = [];
-
-const managerInputs =[
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Team Manager\'s Name:',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'Team Manager\'s ID:',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Team Manager\'s Email:',
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Short Description about Team Manager:',
-    },
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: 'Team Manager\'s Office Number:',
-    },
-];
-
-const engineerInputs =[
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Engineer\'s Name:',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'Engineer\'s ID:',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Engineer\'s Email:',
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Short Description about Engineer:',
-    },
-    {
-        type: 'input',
-        name: 'gitHub',
-        message: 'Engineer\'s GitHub Username:',
-    },
-    {
-        type: 'input',
-        name: 'linkedIn',
-        message: 'Engineer\'s LinkedIn Profile URL:',
-    },
-];
-
-const internInputs =[
-    {
-        type: 'input',
-        name: 'name',
-        message: 'Intern\'s Name:',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'Intern\'s ID:',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'Intern\'s Email:',
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Short Description about Intern:',
-    },
-    {
-        type: 'input',
-        name: 'school',
-        message: 'Intern\'s School:',
-    },
-    {
-        type: 'input',
-        name: 'linkedIn',
-        message: 'Intern\'s LinkedIn Profile URL:',
-    },
-];
-
-const nextTeamMember = [
-    {
-        type: 'list',
-        name: 'choice',
-        message: 'Next team member:',
-        choices: options,
-    },
-];
 
 init();
 
 function init(){
 
     inquirer
-        .prompt(managerInputs)
+        .prompt(constants.managerInputs)
         .then((response) => {
 
             //Validates the user input data.
@@ -156,15 +56,15 @@ function addMoreEmployees(){
 
     //Prompts to add employees and gets user response whether user would like to add engineer or intern or none.
     inquirer
-        .prompt(nextTeamMember)
+        .prompt(constants.nextTeamMember)
         .then((response) => { 
             
             //If user selects to add engineer, prompts questions about engineer.
-            if(response.choice === options[0]) {
+            if(response.choice === constants.options[0]) {
                         
                 //Prompts to add engineer and ask questions about the engineer.
                 inquirer
-                    .prompt(engineerInputs)
+                    .prompt(constants.engineerInputs)
                     .then((response) => {
 
                         //Validates the user input data.
@@ -183,11 +83,11 @@ function addMoreEmployees(){
             } 
             
             //If user selects to add intern, prompts questions about intern.
-            else if (response.choice  === options[1]){
+            else if (response.choice  === constants.options[1]){
 
                 //Prompts to add intern and ask questions about the intern.
                 inquirer
-                    .prompt(internInputs)
+                    .prompt(constants.internInputs)
                     .then((response) => {
 
                         //Validates the user input data.
@@ -207,6 +107,8 @@ function addMoreEmployees(){
 
             else {
                 //console.log(employees);
+
+                //Create HTML file.
             }
         });
 
