@@ -41,6 +41,11 @@ const managerInputs =[
     },
     {
         type: 'input',
+        name: 'description',
+        message: 'Short Description about Team Manage:',
+    },
+    {
+        type: 'input',
         name: 'officeNumber',
         message: 'Team Manager\'s Office Number:',
     },
@@ -102,6 +107,15 @@ const internInputs =[
     },
 ];
 
+const addMoreEmployee = [
+    {
+        type: 'list',
+        name: 'choice',
+        message: 'Next team member:',
+        choices: options,
+    },
+];
+
 init();
 
 function init(){
@@ -110,9 +124,55 @@ function init(){
         .then((response) => {
 
             if(!validateInputData(response)) return;
+
+            //Create manager class from response.
+            const manager = new Manager(response.name, response.id, response.email, response.description, response.officeNumber);
+            console.log(manager);
+
+            //Add manager class to employee list.
+            employees.push(manager);
+
+            //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
+            //Does not generate the HTML file if fails to obtain data for new employee e.g. user doesn't specify values (empty values).
+            if(!promptToAddMoreEmployees()) return;
+
+            //Generate HTML.
         });
 }
 
+function promptToAddMoreEmployees(){
+
+    inquirer
+        .prompt(addMoreEmployee)
+        .then((response) => {
+
+            //If user selects to add engineer, prompts questions about engineer.
+            if(response.choice === options[0]) {
+                
+                
+                //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
+                //Returns false, if fails.
+                if(!promptToAddMoreEmployees()) return false;
+            } 
+            
+            //If user selects to add intern, prompts questions about intern.
+            else if (response.choice === options[1]){
+
+
+                //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
+                //Returns false, if fails.
+                if(!promptToAddMoreEmployees()) return false;
+            }
+
+            //Exits the function, if user doesn't want to add more employee.
+            else{
+                console.log(response.choice);
+                return;
+            }
+    });
+
+    return true;
+}
 
 //Validate the user input data.
 function validateInputData(data){
