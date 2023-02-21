@@ -42,7 +42,7 @@ const managerInputs =[
     {
         type: 'input',
         name: 'description',
-        message: 'Short Description about Team Manage:',
+        message: 'Short Description about Team Manager:',
     },
     {
         type: 'input',
@@ -66,6 +66,11 @@ const engineerInputs =[
         type: 'input',
         name: 'email',
         message: 'Engineer\'s Email:',
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Short Description about Engineer:',
     },
     {
         type: 'input',
@@ -97,6 +102,11 @@ const internInputs =[
     },
     {
         type: 'input',
+        name: 'description',
+        message: 'Short Description about Intern:',
+    },
+    {
+        type: 'input',
         name: 'school',
         message: 'Intern\'s School:',
     },
@@ -119,25 +129,21 @@ const addMoreEmployee = [
 init();
 
 function init(){
-    inquirer
-        .prompt(managerInputs)
-        .then((response) => {
 
-            if(!validateInputData(response)) return;
+    //Promts to add manager and asks questions about the manager.
+    const manager = promptToAddManager();
 
-            //Create manager class from response.
-            const manager = new Manager(response.name, response.id, response.email, response.description, response.officeNumber);
-            console.log(manager);
+    //Exits the function if fails to find manager data.
+    if(manager === null) return;
 
-            //Add manager class to employee list.
-            employees.push(manager);
+    //Add manager to employee list.
+    employees.push(manager);
 
-            //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
-            //Does not generate the HTML file if fails to obtain data for new employee e.g. user doesn't specify values (empty values).
-            if(!promptToAddMoreEmployees()) return;
+    //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
+    //Exits the function if fails to find engineer or intern data.
+    if(!promptToAddMoreEmployees()) return;
 
-            //Generate HTML.
-        });
+    //Generate HTML.
 }
 
 function promptToAddMoreEmployees(){
@@ -149,6 +155,13 @@ function promptToAddMoreEmployees(){
             //If user selects to add engineer, prompts questions about engineer.
             if(response.choice === options[0]) {
                 
+                //Promots to add engineer.
+                //Returns false if fails to get engineer data.
+                const engineer = promtToAddEngineer();
+                if(engineer === null) return false;
+
+                //Add the engineer to employee list.
+                employees.push(engineer);
                 
                 //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
                 //Returns false, if fails.
@@ -169,9 +182,42 @@ function promptToAddMoreEmployees(){
                 console.log(response.choice);
                 return;
             }
-    });
+        });
 
     return true;
+}
+
+function promtToAddEngineer(){
+
+    inquirer
+    .prompt(engineerInputs)
+    .then((response) => {
+
+        if(!validateInputData(response)) return null;
+
+        //Create manager class from response.
+        const engineer = new Engineer(response.name, response.id, response.email, response.description, response.gitHub, response.linkedIn);
+        console.log(engineer);
+
+        return engineer;
+    });
+}
+
+//Promts to add manager and asks questions about the manager.
+function promptToAddManager(){
+
+    inquirer
+        .prompt(managerInputs)
+        .then((response) => {
+
+            if(!validateInputData(response)) return null;
+
+            //Create manager class from response.
+            const manager = new Manager(response.name, response.id, response.email, response.description, response.officeNumber);
+            console.log(manager);
+
+            return manager;
+        });
 }
 
 //Validate the user input data.
