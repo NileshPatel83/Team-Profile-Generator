@@ -117,7 +117,7 @@ const internInputs =[
     },
 ];
 
-const addMoreEmployee = [
+const nextTeamMember = [
     {
         type: 'list',
         name: 'choice',
@@ -130,97 +130,90 @@ init();
 
 function init(){
 
-    //Promts to add manager and asks questions about the manager.
-    const manager = promptToAddManager();
-
-    //Exits the function if fails to find manager data.
-    if(manager === null) return;
-
-    //Add manager to employee list.
-    employees.push(manager);
-
-    //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
-    //Exits the function if fails to find engineer or intern data.
-    if(!promptToAddMoreEmployees()) return;
-
-    //Generate HTML.
-}
-
-function promptToAddMoreEmployees(){
-
     inquirer
-        .prompt(addMoreEmployee)
+        .prompt(managerInputs)
         .then((response) => {
 
+            //Validates the user input data.
+            if(!validateInputData(response)) return;
+
+            //Create manager class from response.
+            const manager = new Manager(response.name, response.id, response.email, response.description, response.officeNumber);
+            //console.log(manager);
+
+            //Add manager to employee list.
+            employees.push(manager);
+
+            //Asks user whether they would like to add more employees or not.
+            addMoreEmployees();
+        });
+    
+    return true;
+}
+
+//Asks user whether they would like to add more employees or not.
+function addMoreEmployees(){
+
+    //Prompts to add employees and gets user response whether user would like to add engineer or intern or none.
+    inquirer
+        .prompt(nextTeamMember)
+        .then((response) => { 
+            
             //If user selects to add engineer, prompts questions about engineer.
             if(response.choice === options[0]) {
-                
-                //Promots to add engineer.
-                //Returns false if fails to get engineer data.
-                const engineer = promtToAddEngineer();
-                if(engineer === null) return false;
+                        
+                //Prompts to add engineer and ask questions about the engineer.
+                inquirer
+                    .prompt(engineerInputs)
+                    .then((response) => {
 
-                //Add the engineer to employee list.
-                employees.push(engineer);
-                
-                //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
-                //Returns false, if fails.
-                if(!promptToAddMoreEmployees()) return false;
+                        //Validates the user input data.
+                        if(!validateInputData(response)) return false;
+
+                        //Create engineer class from response.
+                        const engineer = new Engineer(response.name, response.id, response.email, response.description, response.gitHub, response.linkedIn);
+                        //console.log(engineer);
+
+                        //Add the engineer to employee list.
+                        employees.push(engineer);
+
+                        //Asks user whether they would like to add more employees or not.
+                        addMoreEmployees();
+                    });
             } 
             
             //If user selects to add intern, prompts questions about intern.
-            else if (response.choice === options[1]){
+            else if (response.choice  === options[1]){
 
+                //Prompts to add intern and ask questions about the intern.
+                inquirer
+                    .prompt(internInputs)
+                    .then((response) => {
 
-                //Prompts to add employees and ask questions for each employee type e.g. Engineer, Intern etc.
-                //Returns false, if fails.
-                if(!promptToAddMoreEmployees()) return false;
+                        //Validates the user input data.
+                        if(!validateInputData(response)) return false;
+
+                        //Create intern class from response.
+                        const intern = new Intern(response.name, response.id, response.email, response.description, response.school, response.linkedIn);
+                        //console.log(intern);
+
+                        //Add the intern to employee list.
+                        employees.push(intern);
+
+                        //Asks user whether they would like to add more employees or not.
+                        addMoreEmployees();
+                });
             }
 
-            //Exits the function, if user doesn't want to add more employee.
-            else{
-                console.log(response.choice);
-                return;
+            else {
+                //console.log(employees);
             }
         });
 
     return true;
 }
 
-function promtToAddEngineer(){
-
-    inquirer
-    .prompt(engineerInputs)
-    .then((response) => {
-
-        if(!validateInputData(response)) return null;
-
-        //Create manager class from response.
-        const engineer = new Engineer(response.name, response.id, response.email, response.description, response.gitHub, response.linkedIn);
-        console.log(engineer);
-
-        return engineer;
-    });
-}
-
-//Promts to add manager and asks questions about the manager.
-function promptToAddManager(){
-
-    inquirer
-        .prompt(managerInputs)
-        .then((response) => {
-
-            if(!validateInputData(response)) return null;
-
-            //Create manager class from response.
-            const manager = new Manager(response.name, response.id, response.email, response.description, response.officeNumber);
-            console.log(manager);
-
-            return manager;
-        });
-}
-
-//Validate the user input data.
+//Validates the user input data.
 function validateInputData(data){
 
     let failedFields = [];
