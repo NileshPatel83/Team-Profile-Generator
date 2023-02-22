@@ -48,7 +48,7 @@ npm test
 ```
 
 ## Deployment
-Deployed webpage: https://nileshpatel83.github.io/Team-Profile-Generator
+N/A
 
 ## Screenshots
 The page resembles as following on desktop.
