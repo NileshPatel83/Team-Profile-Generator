@@ -43,7 +43,7 @@ describe("Engineer", () => {
 
             const engineer = new Engineer(name, id, email, description, github, linkedIn);
 
-            expect(engineer.getGithub()).toEqual(`https://github.com/${github}`);
+            expect(engineer.getGithub()).toEqual(github);
         });
     });
 
