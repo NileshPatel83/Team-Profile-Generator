@@ -59,6 +59,10 @@ The page resembles as following on mobile.
 
 ![MobileImage](images/MobileImage.png)
 
+Command-line entries:
+
+![TerminalImage](images/TerminalImage.png)
+
 ## License
 The project is licensed under: MIT.
 
