@@ -1,6 +1,3 @@
-//Variable to access Employee class.
-const Employee = require('./lib/Employee.js');
-
 //Variable to access Manager class.
 const Manager = require('./lib/Manager.js');
 
@@ -24,7 +21,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 //Employee array that will be used to generate HTML content.
-let employees = [];
+let employeeData = [];
 
 init();
 
@@ -42,7 +39,7 @@ function init(){
             //console.log(manager);
 
             //Add manager to employee list.
-            employees.push(manager);
+            employeeData.push(manager);
 
             //Asks user whether they would like to add more employees or not.
             addMoreEmployees();
@@ -75,7 +72,7 @@ function addMoreEmployees(){
                         //console.log(engineer);
 
                         //Add the engineer to employee list.
-                        employees.push(engineer);
+                        employeeData.push(engineer);
 
                         //Asks user whether they would like to add more employees or not.
                         addMoreEmployees();
@@ -98,7 +95,7 @@ function addMoreEmployees(){
                         //console.log(intern);
 
                         //Add the intern to employee list.
-                        employees.push(intern);
+                        employeeData.push(intern);
 
                         //Asks user whether they would like to add more employees or not.
                         addMoreEmployees();
@@ -108,11 +105,40 @@ function addMoreEmployees(){
             else {
                 //console.log(employees);
 
-                //Create HTML file.
+                //Processes employee data to HTML file.
+                processEmployeeData();
             }
         });
 
     return true;
+}
+
+//Processes employee data to HTML file.
+function processEmployeeData(){
+
+    //console.log(employeeData);
+
+    //Create HTML Template class using employee data.
+    const htmlemplate = new HTMLTemplate(employeeData);
+
+    //Generates HTML content from enplyee data.
+    const htmlContent = htmlemplate.generateHTMLContent();
+    if(htmlContent === ''){
+        console.error('Failed to generate HTML content to create HTML file.');
+    }
+
+    //Creates HTML file.
+    createHTMLFile(htmlContent);
+}
+
+//Creates HTML file.
+function createHTMLFile(htmlContent){
+
+    const htmlFilePath = `./dist/${constants.htmlFileName}`;
+
+    fs.writeFile(htmlFilePath, htmlContent, (err) =>
+        err ? console.error(err) : console.log(`${constants.htmlFileName} file created successfully!`)
+    );
 }
 
 //Validates the user input data.
